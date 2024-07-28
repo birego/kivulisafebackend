@@ -24,7 +24,7 @@ describe('User Controller', () => {
     it('should create a new user', async () => {
       const req = {
         body: {
-          email: 'john.doe@example.com',
+          email: 'birego@gmail.com',
           password: 'password123',
         },
       };
@@ -38,13 +38,13 @@ describe('User Controller', () => {
       await createUser(req, res);
 
       expect(res.status).toHaveBeenCalledWith(201);
-      expect(res.json).toHaveBeenCalledWith({ id: 1, email: 'john.doe@example.com' });
+      expect(res.json).toHaveBeenCalledWith({ id: 1, email: 'birego@gmail.com' });
     });
 
     it('should handle errors', async () => {
       const req = {
         body: {
-          email: 'john.doe@example.com',
+          email: 'birego@gmail.com',
           password: 'password123',
         },
       };
@@ -66,7 +66,7 @@ describe('User Controller', () => {
     it('should login a user and return a token', async () => {
       const req = {
         body: {
-          email: 'john.doe@example.com',
+          email: 'birego@gmail.com',
           password: 'password123',
         },
       };
@@ -74,7 +74,7 @@ describe('User Controller', () => {
         status: jest.fn().mockReturnThis(),
         json: jest.fn(),
       };
-      const user = { id: 1, email: 'john.doe@example.com', password: 'hashedPassword' };
+      const user = { id: 1, email: 'birego@gmail.com', password: 'hashedPassword' };
       prisma.user.findUnique.mockResolvedValue(user);
       bcrypt.compare.mockResolvedValue(true);
       jwt.sign.mockReturnValue('token');
@@ -88,7 +88,7 @@ describe('User Controller', () => {
     it('should return 401 if invalid email or password', async () => {
       const req = {
         body: {
-          email: 'john.doe@example.com',
+          email: 'birego@gmail.com',
           password: 'password123',
         },
       };
@@ -107,7 +107,7 @@ describe('User Controller', () => {
     it('should handle errors', async () => {
       const req = {
         body: {
-          email: 'john.doe@example.com',
+          email: 'birego@gmail.com',
           password: 'password123',
         },
       };
